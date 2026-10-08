@@ -1,16 +1,65 @@
-# React + Vite
+# Mercadito · Lista de compras
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Lista de compras hecha con React y CSS. Permite agregar productos, marcarlos como comprados y eliminarlos. Este proyecto forma parte de mi práctica para entender cómo manejar un array de objetos en el estado de React.
 
-Currently, two official plugins are available:
+## Qué puedes hacer
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Agregar productos desde un formulario.
+- Recibir un aviso si intentas agregar un producto con el campo vacío.
+- Marcar y desmarcar productos como comprados.
+- Ver tachados los productos comprados.
+- Eliminar un producto por su id.
+- Ver un mensaje cuando la lista está vacía.
 
-## React Compiler
+Los productos se guardan en el estado durante el uso de la página. La lista se pierde al recargarla.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Qué practiqué
 
-## Expanding the ESLint configuration
+- Manejo de estado con `useState`.
+- Un input controlado con `value` y `onChange`.
+- Envío del formulario con `onSubmit` y `preventDefault()`.
+- Creación de ids con `crypto.randomUUID()`.
+- Uso de spread para agregar un objeto a un array nuevo.
+- Uso de `map` para actualizar un producto conservando los demás.
+- Uso de `filter` para eliminar un producto sin modificar el array original.
+- Lectura de `evento.target.checked` para saber si un checkbox está marcado.
+- Renderizado de listas con `map` y `key`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Cómo se organiza
+
+- `src/App.jsx`: contiene la interfaz, los estados y las funciones para agregar, marcar y eliminar productos.
+- `src/index.css`: contiene los estilos de la aplicación.
+- `src/main.jsx`: monta la aplicación.
+
+Cada producto tiene un `id`, un `nombre` y un `estado`: `0` para pendiente y `1` para comprado.
+
+## Detalles por mejorar
+
+- El contador rotulado «pendientes» actualmente cuenta todos los productos, incluidos los comprados. Falta calcularlo a partir de los productos con estado `0`.
+- La validación rechaza el texto vacío, pero todavía permite un nombre compuesto únicamente por espacios.
+- Pasar un booleano directamente a la prop `checked` del checkbox.
+
+## Tecnologías
+
+React, JavaScript, JSX, CSS y Vite. El proyecto también incluye ESLint para revisar el código.
+
+## Ejecutar en local
+
+Necesitas Node.js y npm instalados. Desde la carpeta del proyecto:
+
+```bash
+npm install
+npm run dev
+```
+
+Abre la dirección que Vite muestre en la terminal.
+
+## Otros comandos
+
+```bash
+npm run build    # Genera la versión de producción en dist
+npm run preview  # Sirve localmente la versión generada
+npm run lint     # Revisa el código con ESLint
+```
+
+Antes de usar `npm run preview`, ejecuta `npm run build`.
